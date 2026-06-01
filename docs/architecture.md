@@ -107,11 +107,29 @@ Lives entirely in `BuildingManager`. When a third building of the same type is p
 4. Call `RecalculateAdjacency()` for all affected cells
 
 ### Wall System
-Each wall ring is an independent HP pool tracked in a `WallRing` component. Walls are **never repaired**. Wall HP only decreases.
+A single wall ring surrounds the base. Wall tiles use the `tile-walls` asset. Walls are **never repaired**. Wall HP only decreases and does not reset or increase on expansion.
 
-Visual degradation is handled by swapping sprites or adjusting a material property at HP thresholds (e.g. 75%, 50%, 25%, 0%). HP is tracked per ring, not per segment, in the prototype.
+HP is a single shared pool across all wall tiles, tracked in a `WallManager` component and displayed in the HUD. At 0 HP the run ends.
 
-At 0 HP, the ring is marked breached. `WaveManager` updates enemy pathing to route through the breached ring.
+Enemies path to and attack the **nearest wall tile**.
+
+**Tile types and buildability:**
+- `tile-castle` — center tile, permanently unbuildable
+- `stone-tile` — base tiles, the only buildable area
+- `tile-walls` — wall perimeter tiles, unbuildable
+
+**Expansion sequence** (triggered by player level-up in planning mode):
+1. Add N new `stone-tile` base tiles clockwise from the top-right neighbor of the center hex, in a fixed deterministic order, where N = `BaseConfig.tilesPerExpansion`.
+2. Recalculate the wall perimeter around the full new base shape.
+3. Any tile that was `tile-walls` but is now interior to the new perimeter becomes a buildable `stone-tile`.
+4. New perimeter tiles become `tile-walls`.
+
+**Tile spawn animation:** every tile placed (base or wall, at run start or on expansion) plays a coroutine scaling it from 0 → 1.3 → 1.
+
+**BaseConfig ScriptableObject fields:**
+- `initialTileCount` (int) — stone-tile count at run start, not counting the castle center (default: 3)
+- `tilesPerExpansion` (int) — tiles added per level-up
+- `maxExpansions` (int) — cap on total expansions per run
 
 ---
 

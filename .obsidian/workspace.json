@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/architecture.md",
+                "file": "docs/production/current_task.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "architecture"
+              "title": "current_task"
             }
           }
         ]
@@ -185,17 +185,18 @@
   },
   "active": "f9eb67498c9216f7",
   "lastOpenFiles": [
-    "docs/production/current_task.md.tmp.42448.fe308ea60e46",
-    "Temp/UnityTempFile-921f2155cf5d22a47916303a18d6790d",
-    "Temp/UnityTempFile-b9e8ffadd99ef6f4aa69bfa4f045d999",
-    "Temp/UnityTempFile-e6d8f3b62fcca5a43b53a6f176cb4daf",
-    "Temp/UnityTempFile-1233d89155932304fa8f095836bf4704",
-    "Temp/__Backupscenes/0.backup",
-    "Temp/__Backupscenes",
-    "Library/Artifacts/62/62a7f923416c422009ab7abf1222c4c1",
-    "Assets/Scripts/Data/ScritableObjects/MapConfig.asset.meta",
-    "Assets/Scripts/Data/ScritableObjects/MapConfig.asset",
-    "Library/Artifacts/70/70e02cd511d6fd2c21a5f4dfa7fac2a0",
+    "Library/Artifacts/a7/a741967f39e917b7c4879f89007b13db",
+    "Library/TempArtifacts/Extra/36843d018ee549247b7e20540dce7f36.info",
+    "Library/Artifacts/a9/a9ca1c83ef6d2c2edb8b171b186dede7",
+    "Library/Artifacts/82/822694028150dfdd9f2d01525a71d593",
+    "Library/TempArtifacts/Extra/52ddc33062eb59749a23f22eb5159424.info",
+    "Library/Artifacts/2b/2bc3620dfd5302f50181c00ef7ef7d15",
+    "Library/TempArtifacts/Extra/026990a571a1d87458a288513e3d94b3.info",
+    "Library/Artifacts/e4/e4696d0ebbf1d1dd801889321aa25272",
+    "Library/Artifacts/9d/9d9d853dea1ca13465a145b7130a4d7b",
+    "Library/TempArtifacts/Extra/4437a1a9c61acf8449348f3ab8874190.info",
+    "Library/Artifacts/c9/c99e56edb3c99fd46c08647cc8aab7f4",
+    "docs/architecture.md",
     "Assets/Art/Source/Models/SurvivalKit/Textures/colormap.png",
     "Assets/Art/Source/Models/HexagonKit/Textures/colormap.png",
     "Assets/Art/Source/Models/FantasyTownKit/Textures/colormap.png",
@@ -216,7 +217,6 @@
     "Library/PackageCache/com.unity.2d.tilemap@43eb9b2da17d/CHANGELOG.md",
     "docs/systems/map_generation.md",
     "docs/assets.md",
-    "docs/architecture.md",
     "cursor_guidelines.md",
     "changelog.md",
     "architecture.md",

@@ -36,14 +36,27 @@ Buildings of the same school placed adjacent to each other gain synergy bonuses.
 
 ### Wall System
 **Status:** `specced`  
-Concentric walls define buildable area and act as base HP buffer. Wall 1 at start. Wall 2 unlocked at level 4. Wall 3 unlocked at level 8. Walls never repair. Enemies breach outer walls and attack buildings and inner walls. Each wall ring is a separate HP pool.
+A single wall ring surrounds the base and acts as the base HP buffer. The wall is represented by `tile-walls` tiles placed on every hex that borders the base perimeter.
+
+Wall HP is a single shared pool across all wall tiles. It is displayed in the HUD, never repairs, and does not reset or increase when the base expands. At 0 HP the run ends.
+
+Enemies path toward and attack the nearest wall tile.
+
+**Expansion:** When the player levels up (via gold purchase in planning mode), the base expands:
+1. New base tiles (`stone-tile`) are added clockwise starting from the top-right neighbor of the center hex, following the same fixed order every time, quantity defined in `BaseConfig`.
+2. The wall perimeter is recalculated. Any tile that was a wall tile but is now interior to the new perimeter becomes a buildable stone base tile.
+3. New perimeter tiles become wall tiles.
+
+All newly placed tiles (base or wall) play a spawn animation: scale 0 → 1.3 → 1.
+
+Expansion cap is configurable in `BaseConfig`. Wall tiles are unbuildable. The castle center tile (`tile-castle`) is permanently unbuildable.
 
 ---
 
 ### Player Leveling System
 **Status:** `specced`  
 **Doc:** [[economy]]  
-Player spends gold to level up. Higher level increases passive income and upgrade rarity rolls. Level 4 and 8 trigger wall expansion. Incentivizes holding out at lower power for long-term advantage.
+Player spends gold to level up. Higher level increases passive income and upgrade rarity rolls. Each level up triggers a base wall expansion. Leveling is done during planning mode. Incentivizes holding out at lower power for long-term advantage.
 
 ---
 
