@@ -1,6 +1,6 @@
 # Map Generation
 
-**Status:** `specced`
+**Status:** `implemented`
 
 ## Overview
 

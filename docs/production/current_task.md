@@ -14,7 +14,7 @@ Get a hex grid on screen with a player that can move, enemies that spawn and pat
 
 ## Tasks
 
-- [ ] Create hex grid scene using Unity TileMap in hex mode
+- [x] Create hex grid scene using Unity TileMap in hex mode
 - [ ] Place a base area in the center of the grid (marked tiles)
 - [ ] Add a wall ring around the base area (Wall 1)
 - [ ] Implement player character: 8-directional movement, stays on grid
