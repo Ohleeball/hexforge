@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: water-tile
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
   isWalkable: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 5110380255088162064, guid: 08ca9eadcc0971d4abcfa39991bb6f32, type: 3}

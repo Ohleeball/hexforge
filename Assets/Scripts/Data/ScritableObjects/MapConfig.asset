@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5185e81d6e0c40c78c4cba0d8aad06ac, type: 3}
   m_Name: MapConfig
   m_EditorClassIdentifier: Assembly-CSharp::MapConfig
-  islandRadius: 200
-  borderWidth: 5
+  islandRadius: 20
+  borderWidth: 10
   waterPercent: 0.3
   waterClusterCount: 8
   waterClusterMaxSize: 0

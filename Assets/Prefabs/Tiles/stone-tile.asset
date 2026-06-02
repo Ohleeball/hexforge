@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a4c7ab45f504d61b67c94fa343e2144, type: 3}
-  m_Name: grass-tile
+  m_Name: stone-tile
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
   isWalkable: 1
-  prefab: {fileID: 3194063148514762928, guid: 9521adba2c630c343b5e1514b7f43cf3, type: 3}
+  prefab: {fileID: 1489981022872551477, guid: f4f9169ec9c869e4485dd62c9b680d04, type: 3}
