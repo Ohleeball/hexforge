@@ -50,13 +50,20 @@ Assets/
 ## Key Architectural Decisions
 
 ### Hex Grid
-Use Unity's **Tilemap with hex layout** (Grid component set to Hexagonal Point Top or Flat Top — decide before starting, do not change mid-prototype). The Tilemap sits on the ground plane (Y = 0) and handles cell coordinates, snapping, and neighbor logic.
+Use Unity's **Tilemap with hex layout**. The Tilemap sits on the ground plane (Y = 0) and handles cell coordinates, snapping, and neighbor logic.
+
+**Confirmed Grid settings (do not change):**
+- Cell layout: `Hexagon`
+- Swizzle: `XZY`
+- Cell Size: `(1, 1.155, 1.155)` — matches the asset pack tile proportions (1.155 = 2/√3, correct for pointy-top hexagons)
+- Orientation: **Pointy-top**
+- Tile prefab scale: `(1, 1, 1)` — Cell Size is the single source of tile sizing, do not scale prefabs to compensate
 
 3D prefabs (buildings, characters, enemies) are instantiated in world space at positions derived from `Grid.CellToWorld(cellCoord)`, with a Y offset to sit correctly on top of the tile. The Tilemap manages the grid; prefabs handle the visual and gameplay presence.
 
 All gameplay logic uses **cell coordinates** (`Vector3Int`) internally. Use `Grid.WorldToCell` and `Grid.CellToWorld` for conversion. Never store world positions as the source of truth for grid state.
 
-**Adjacency rule:** Two buildings are adjacent if they share a hex edge. Corner-only contact does not count. Implement a `HexUtils.GetNeighbors(Vector3Int cell)` helper returning the 6 edge-sharing neighbors.
+**Adjacency rule:** Two buildings are adjacent if they share a hex edge. Corner-only contact does not count. Use `HexUtils.GetNeighbors(Vector3Int cell)` for the 6 edge-sharing neighbors — the correct direction vectors for this grid configuration are already implemented in `HexUtils`, do not change them.
 
 ### Game State Machine
 The game has two top-level states: `COMBAT` and `PLANNING`. These are mutually exclusive. Implement as a simple enum-based state machine on a `GameManager` singleton.
