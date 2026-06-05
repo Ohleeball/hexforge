@@ -15,7 +15,8 @@ Get a hex grid on screen with a player that can move, enemies that spawn and pat
 ## Tasks
 
 - [x] Create hex grid scene using Unity TileMap in hex mode
-- [ ] Place base area in center of grid: center tile (tile-castle, unbuildable), surrounded by initialTileCount stone-tiles (buildable), surrounded by wall ring (tile-walls, unbuildable). All tiles play spawn animation on placement (scale 0 → 1.3 → 1).
+- [x] Place base area in center of grid: center tile (tile-castle, unbuildable), surrounded by initialTileCount stone-tiles (buildable), surrounded by wall ring (tile-walls, unbuildable). All tiles play spawn animation on placement (scale 0 → 1.3 → 1).
+- [ ] Implement camera system (`IsometricCameraController.cs`) — see `docs/systems/camera.md`
 - [ ] Implement player character: 8-directional movement, stays on grid
 - [ ] Implement basic enemy: spawns at map edge, paths toward base wall
 - [ ] Implement wall HP: single shared pool across all wall tiles, tracked in WallManager, displayed in HUD; enemies deal damage on contact with nearest wall tile

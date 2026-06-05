@@ -11,6 +11,7 @@ Before writing any code for a system, read the relevant design doc:
 - Building work → read `building_roster.md`
 - UI work → read `ui_principles.md`
 - Architecture decisions → read `architecture.md`
+- Camera work → read `docs/systems/camera.md`
 - What to build right now → read `current_task.md`
 
 Do not infer design intent from the code. The docs are the source of truth.
@@ -59,6 +60,41 @@ Do not infer design intent from the code. The docs are the source of truth.
 
 - After implementing each phase, manually test the full loop described in `core_gameplay_loop.md`.
 - If a system behaves differently from its design doc, flag it with a `# TODO: Design mismatch —` comment and describe the discrepancy. Do not silently change the design.
+
+---
+
+## Documentation Process
+
+### Rules for both Claude Chat and Claude Code
+
+- **No per-task `.md` files.** Do not create files like `camera_task.md`, `task_001.md`, or similar. They clutter the project and become orphaned. Tasks live in `current_task.md` only.
+- **`current_task.md` is the single source of truth** for what is being built right now. Update it at the start of every session and when tasks are completed.
+- **`docs/DEVLOG.md` is the rolling session log.** Append a dated entry at the end of every session summarising what was done. Never edit or delete past entries.
+- **Decision reasoning belongs in the system design doc.** When a meaningful choice is made (e.g. why a pattern, architecture, or constraint was chosen), record it under a `## Decisions` section in the relevant system doc in `docs/systems/`. Do not create a separate file for it.
+- **Cross-cutting decisions** (those that do not belong to any single system) go in `docs/architecture.md`.
+
+### Decision format (inside a system doc)
+
+```
+## Decisions
+
+### [Short title of decision] — YYYY-MM-DD
+**Choice:** What was decided.
+**Why:** The reasoning. What alternatives were considered and why they were rejected.
+**Consequences:** Any known trade-offs or things this rules out in future.
+```
+
+### Folder purposes
+
+| Folder / File | Purpose |
+|---|---|
+| `docs/systems/` | One design doc per system. Source of truth for how each system works and why. |
+| `docs/production/current_task.md` | Active tasks only. What is being built right now. |
+| `docs/production/prototype_scope.md` | Phase roadmap and overall prototype boundaries. |
+| `docs/DEVLOG.md` | Rolling append-only session log. |
+| `docs/architecture.md` | Project-wide structure and cross-cutting decisions. |
+| `docs/assets.md` | Asset conventions and pipeline. |
+| `docs/changelog.md` | Released/completed feature log. |
 
 ---
 

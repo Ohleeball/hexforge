@@ -4,6 +4,30 @@ Design decisions log. Most recent first. Include the *why*, not just the *what*.
 
 ---
 
+## Session 2 — Player Character Spec
+
+### Rigidbody-based movement
+**Decision:** Player uses `Rigidbody` with `MovePosition`, not `CharacterController` or Transform.
+**Why:** Enemies and walls need real physics collision. `CharacterController` doesn't play well with Rigidbody-based enemies. Transform bypasses physics entirely and would require manual collision handling later.
+
+### Axis-separated sliding on unwalkable tiles
+**Decision:** When the target cell is unwalkable, X and Z movement components are tested independently. Whichever axis leads to a walkable cell is applied, allowing the player to slide along boundaries.
+**Why:** Hard blocking stops the player dead at wall edges, which feels bad and is especially punishing on a hex grid with irregular diagonal boundaries. Axis-separation is the minimal correct implementation of sliding without a full physics solver.
+
+### Always-face-mouse, independent of movement direction
+**Decision:** Character rotation is determined solely by mouse cursor world position, not by the movement vector.
+**Why:** Attacking enemies requires aiming independently of movement direction. Decoupling the two enables strafing, which is fundamental to the skill-based combat feel the design calls for.
+
+### Walkability queried per-frame from Tilemap
+**Decision:** `tilemap.GetTile<HexTile>(cellCoord)` is called each `FixedUpdate` rather than caching a walkability map on the player.
+**Why:** The tile grid mutates during a run (base expansions change wall positions). A cached map would go stale. The per-frame lookup is cheap and always correct.
+
+### idle and walk animations only for Phase 1
+**Decision:** Only the `idle` and `walk` clips from `character-keeper.fbx` are wired in the Animator for Phase 1. The full clip set (`attack-melee-left`, `attack-melee-right`, `die`, `sprint`, etc.) is deferred to the phase that needs them.
+**Why:** Phase 1 scope is movement only. Wiring unused clips now would create Animator complexity that would likely need reworking when the full combat system is designed.
+
+---
+
 ## Session 1 — Design Documentation
 
 ### No wall repair

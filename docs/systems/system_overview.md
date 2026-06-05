@@ -73,6 +73,20 @@ Entering the base boundary pauses the game. Player can place buildings, view adj
 
 ---
 
+### Player Character System
+**Status:** `specced`  
+**Doc:** [[player_character]]  
+The player is a freely moving character on the hex grid, controlled with WASD + mouse aim. Movement is physics-based and constrained to walkable tiles with axis-separated sliding along unwalkable boundaries.
+
+---
+
+### Camera System
+**Status:** `specced`  
+**Doc:** [[systems/camera]]  
+True 3D isometric orthographic camera with fixed angle. Follows the player with a snappy lerp, and offsets toward the mouse cursor (screen-space) to give aim awareness. Three states: Normal Follow, Death (zoom out, freeze on death position), and Planning Mode (center on castle tile, zoom out). All transitions are smoothly lerped. No boundary clamping. Uses Unity new Input System.
+
+---
+
 ### Enemy Spawning System
 **Status:** `concept`  
 Enemies spawn continuously from map edges. Waves escalate over time. Enemy kills drop gold. Enemy pathing targets base walls. Details TBD.
